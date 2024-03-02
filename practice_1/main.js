@@ -1,37 +1,47 @@
-import { generatePoints, testFunctionSpeed } from "./utils.js";
+/* eslint-disable no-console */
+import {
+  generate2DPoints,
+  generate3DPoints,
+  testFunctionSpeed,
+  generatePolarPointPairs,
+  generateCartesianPointPairs,
+  generateSphericalPointPairs,
+} from "./src/utils.js";
+import { cartesianToPolar, polarToCartesian } from "./src/cartesianPolar.js";
 import {
   cartesianToSpherical,
   sphericalToCartesian,
-} from "./cartesian-spherical.js";
-import { cartesianToPolar, polarToCartesian } from "./cartesian-polar.js";
+} from "./src/cartesianSpherical.js";
+import {
+  cartesianDistance,
+  polarDistance,
+  sphericalDistance,
+} from "./src/distanceCalculation.js";
 
-const cartesianVSPolar = () => {
-  const points2D = generatePoints({
-    n: 10000000,
-    dimensions: 3,
-  });
+const n = 10000;
+const loggingSeparator = "\n--------------------------\n";
+
+const cartesianVSPolarSpeed = () => {
+  const points2D = generate2DPoints({ n });
 
   const cartesianToPolarTime = testFunctionSpeed(cartesianToPolar, points2D);
   const polarToCartesianTime = testFunctionSpeed(polarToCartesian, points2D);
 
   console.log(
+    loggingSeparator,
     `Conversion of cartesian coordinates to polar took ${Math.round(
       cartesianToPolarTime,
     )} milliseconds.`,
-  );
-
-  console.log(
+    "\n",
     `Conversion of polar coordinates to cartesian took ${Math.round(
       polarToCartesianTime,
     )} milliseconds.`,
+    loggingSeparator,
   );
 };
 
-const cartesianVSSpherical = () => {
-  const points3D = generatePoints({
-    n: 10000000,
-    dimensions: 3,
-  });
+const cartesianVSSphericalSpeed = () => {
+  const points3D = generate3DPoints({ n });
 
   const cartesianToSphericalTime = testFunctionSpeed(
     cartesianToSpherical,
@@ -43,17 +53,65 @@ const cartesianVSSpherical = () => {
   );
 
   console.log(
+    loggingSeparator,
     `Conversion of cartesian coordinates to spherical took ${Math.round(
       cartesianToSphericalTime,
     )} milliseconds.`,
-  );
-
-  console.log(
+    "\n",
     `Conversion of spherical coordinates to cartesian took ${Math.round(
       sphericalToCartesianTime,
     )} milliseconds.`,
+    loggingSeparator,
   );
 };
 
-cartesianVSPolar();
-cartesianVSSpherical();
+const cartesianDistanceSpeed = () => {
+  const cartesianPointPairs = generateCartesianPointPairs({ n });
+  const cartesianDistanceTime = testFunctionSpeed(
+    cartesianDistance,
+    cartesianPointPairs,
+  );
+
+  console.log(
+    loggingSeparator,
+    `Calculation of distance between points in cartesian system took ${Math.round(
+      cartesianDistanceTime,
+    )} milliseconds.`,
+    loggingSeparator,
+  );
+};
+
+const polarDistanceSpeed = () => {
+  const polarPointPairs = generatePolarPointPairs({ n });
+  const polarDistanceTime = testFunctionSpeed(polarDistance, polarPointPairs);
+
+  console.log(
+    loggingSeparator,
+    `Calculation of distance between points in polar system took ${Math.round(
+      polarDistanceTime,
+    )} milliseconds.`,
+    loggingSeparator,
+  );
+};
+
+const sphericalDistanceSpeed = () => {
+  const sphericalPointPairs = generateSphericalPointPairs({ n });
+  const sphericalDistanceTime = testFunctionSpeed(
+    sphericalDistance,
+    sphericalPointPairs,
+  );
+
+  console.log(
+    loggingSeparator,
+    `Calculation of distance between points in spherical system took ${Math.round(
+      sphericalDistanceTime,
+    )} milliseconds.`,
+    loggingSeparator,
+  );
+};
+
+cartesianVSPolarSpeed();
+cartesianVSSphericalSpeed();
+cartesianDistanceSpeed();
+polarDistanceSpeed();
+sphericalDistanceSpeed();
