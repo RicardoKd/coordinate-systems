@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { cartesianToPolar, polarToCartesian } from "./src/cartesianPolar.js";
 import {
   generate2DPoints,
   generate3DPoints,
@@ -7,7 +8,6 @@ import {
   generateCartesianPointPairs,
   generateSphericalPointPairs,
 } from "./src/utils.js";
-import { cartesianToPolar, polarToCartesian } from "./src/cartesianPolar.js";
 import {
   cartesianToSpherical,
   sphericalToCartesian,
@@ -18,7 +18,7 @@ import {
   sphericalDistance,
 } from "./src/distanceCalculation.js";
 
-const n = 10000;
+const n = 1000000;
 const loggingSeparator = "\n--------------------------\n";
 
 const cartesianVSPolarSpeed = () => {
