@@ -1,0 +1,18 @@
+.tooltip {
+  position: absolute;
+  z-index: 999;
+  visibility: hidden;
+  background: yellow;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  right: 100%;
+  margin-bottom: -5px;
+  border-width: 5px;
+  border-style: solid;
+  margin-right: 5px;
+  border-color: transparent black transparent transparent;
+}
