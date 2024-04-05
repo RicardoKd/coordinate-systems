@@ -1,4 +1,4 @@
-const euclideanDistance = require("./utils/euclideanDistance");
+const euclideanDistance = require("../utils/euclideanDistance");
 
 function gradient(x, y, anchors, distances) {
   let gradX = 0;

@@ -1,5 +1,9 @@
 # Practice #3
 
+- To run the calculations: `node index.js`
+- To run the calculations with graphs: `node graphs.js`
+
+
 ## Result of running the program
 
 1. 0 < noise < 1

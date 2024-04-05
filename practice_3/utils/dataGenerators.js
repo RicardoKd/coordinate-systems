@@ -1,12 +1,12 @@
-const trilateration = require("../trilateration.js");
-const triangulation = require("../triangulation.js");
-const gradientDescent = require("../gradientDescent.js");
 const calculateAngle = require("./calculateAngle.js");
+const trilateration = require("../calculationMethods/trilateration.js");
+const triangulation = require("../calculationMethods/triangulation.js");
+const gradientDescent = require("../calculationMethods/gradientDescent.js");
 const {
   BASE_STATION_1,
   BASE_STATION_2,
   BASE_STATION_3,
-} = require("../const.js");
+} = require("../const/const.js");
 
 function generateTrilaterationData(
   baseStation1,

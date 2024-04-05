@@ -11,7 +11,7 @@ const {
   BASE_STATION_2,
   BASE_STATION_3,
   OBJECT_COORDINATES,
-} = require("./const.js");
+} = require("./const/const.js");
 
 const distanceToBase1 = getDistance(OBJECT_COORDINATES, BASE_STATION_1);
 const distanceToBase2 = getDistance(OBJECT_COORDINATES, BASE_STATION_2);

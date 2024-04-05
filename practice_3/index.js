@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
 
-const trilateration = require("./trilateration.js");
-const triangulation = require("./triangulation.js");
 const getDistance = require("./utils/getDistance.js");
-const gradientDescent = require("./gradientDescent.js");
 const calculateAngle = require("./utils/calculateAngle.js");
+const trilateration = require("./calculationMethods/trilateration.js");
+const triangulation = require("./calculationMethods/triangulation.js");
+const gradientDescent = require("./calculationMethods/gradientDescent.js");
 const {
   BASE_STATION_1,
   BASE_STATION_2,
   BASE_STATION_3,
   OBJECT_COORDINATES,
-} = require("./const.js");
+} = require("./const/const.js");
 
 const noiseVariance = 10;
 const noise1 = Math.random() * noiseVariance;
